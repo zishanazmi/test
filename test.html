@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dynamic Display</title>
+</head>
+<body>
+	<h1 id="demo">Welcome to Dynamic Display</h1>
+
+	<!-- Div elements hidden by default -->
+	<h1 id="4578AED5S5D2F1" style="display: none;">Imran</h1>
+	<h1 id="6478HUI5F5D2G5" style="display: none;">zishan</h1>
+	<h1 id="9658THU5SWD2G3" style="display: none;">alfiya</h1>
+
+	<script type="text/javascript">
+		// Array holding the IDs of the elements
+		const headingIds = [
+			"4578AED5S5D2F1",
+			"6478HUI5F5D2G5",
+			"9658THU5SWD2G3"
+		];
+
+		// Get URL parameters
+		const searchParams = new URLSearchParams(window.location.search);
+		const paramValue = searchParams.get('ID');  // Get the 'ID' parameter as a string
+
+		// Function to display the correct div based on the parameter
+		function displayHeading(paramValue) {
+			// Check if the parameter value exists in the headingIds array
+			if (headingIds.includes(paramValue)) {
+				// Hide all headings
+				headingIds.forEach(id => {
+					document.getElementById(id).style.display = 'none';
+				});
+
+				// Show the element with the ID that matches the paramValue
+				const elementToShow = document.getElementById(paramValue);
+				if (elementToShow) {
+					elementToShow.style.display = 'block';
+				}
+			} else {
+				// Show alert if the input is invalid or does not match any heading
+				alert("Invalid ID provided. Please provide a valid ID.");
+			}
+		}
+
+		// Execute the function to display the heading
+		displayHeading(paramValue);
+	</script>
+</body>
+</html>
